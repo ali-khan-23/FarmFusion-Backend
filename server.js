@@ -57,6 +57,9 @@ app.get("/", (req, res) => {
 app.use((req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
+if (!process.env.MONGO_URI) {
+  console.error("❌ MONGO_URI is not set!");
+}
 
 // ❌ REMOVE app.listen for Vercel
 // const PORT = process.env.PORT || 5000;
